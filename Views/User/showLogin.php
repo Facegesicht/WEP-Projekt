@@ -1,4 +1,5 @@
-<?php
+
+<?php /*
 include dirname(__DIR__).'/header.phtml';
 ?>
 
@@ -8,7 +9,7 @@ include dirname(__DIR__).'/header.phtml';
     <input type="hidden" name="controller" value="user" />
     <input type="hidden" name="do" value="checkLogin" />
     <input type="submit" name="submit" value="Anmelden" />
-
 </form>
 
-<?php include dirname(__DIR__).'/footer.phtml'; ?>
+<?php include dirname(__DIR__).'/footer.phtml'; */?>
+

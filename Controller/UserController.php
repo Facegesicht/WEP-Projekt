@@ -22,27 +22,53 @@ class UserController
 
     }
 
-    public function checkLogin()
+    function showStart() 
     {
-        $username = $_POST["username"];
-        $pw = $_POST["pw"];
+        //von timothy görzen
 
-        echo "Test3: $username mit PW: $pw ";
-        //Db Anfrage
-        $user = $this->db->selectUser($username);
-
-        //$result = $user->execute(array('username'=>$username));
-        //$erg = $user->fetch();
-
-        if($user !== false && password_verify($pw, $user['pw']))
+        if ($_SESSION["login"] != 1)
         {
-            var_dump($user);
-
+            echo "du bist nicht eingeloggt";
+            $this->view->setDoMethodName("showLogin");
+            //include("showLogin.phtml");
+            //exit;
         }
         else
         {
-           $php_errormsg = "Email oder Passwort ungültig";
-           echo "bruder moment, es hat nicht funktioniert";
+            echo "du bist eingeloggt";
+        }
+    }
+
+    public function checkLogin()
+    {
+        // von Timothy Görzen
+
+        if(isset($_POST["username"]) && isset($_POST["pw"]))
+        {
+            $username = $_POST["username"];
+            $pw = $_POST["pw"];
+    
+            echo "Test3: $username mit PW: $pw ";
+
+            $user = $this->db->selectUser($username);
+    
+            if($user !== false && password_verify($pw, $user['pw']))
+            {
+                var_dump($user);
+                $_SESSION["login"] = 1;
+                $this->view->setDoMethodName("showStart");
+            }
+            else
+            {
+                //new \WEP\Library\ErrorMsg('Email oder Passwort falsch');
+                $php_errormsg = "Email oder Passwort ungültig";
+                echo "bruder moment, es hat nicht funktioniert";
+            }
+        }
+
+        if ($_SESSION["login"] != 1)
+        {
+            $this->view->setDoMethodName("showLogin");
         }
 
         //$erg = $this->db->query("SELECT * FROM user");
@@ -56,8 +82,5 @@ class UserController
         //Im Fehlerfall LoginForm nochmals anzeigen - mit Fehlermeldung
         //Im Erfolgsfall Seite xy anzeigen
         //Hinweis: Zum überschreiben der View:
-        $this->view->setDoMethodName("showLogin");
     }
-
-
 }
