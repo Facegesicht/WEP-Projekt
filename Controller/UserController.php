@@ -31,7 +31,12 @@ class UserController
     function showStart() 
     {
         //von timothy görzen
+        $this->checkIfLoggedIn();
+    }
 
+    function checkIfLoggedIn()
+    {
+        // von timothy görzen
         if ($_SESSION["login"] != 1)
         {
             echo "du bist nicht eingeloggt";
@@ -78,8 +83,10 @@ class UserController
             else
             {
                 //new \WEP\Library\ErrorMsg('Email oder Passwort falsch');
+                $message = "wrong answer";
+                echo "<script type='text/javascript'>alert('$message');</script>";
                 $php_errormsg = "Email oder Passwort ungültig";
-                echo "bruder moment, es hat nicht funktioniert";
+                //echo "bruder moment, es hat nicht funktioniert";
             }
         }
 
