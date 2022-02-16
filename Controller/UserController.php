@@ -19,7 +19,13 @@ class UserController
 
     public function showLogin()
     {
+        $this->checkLogin();
+    }
 
+    public function showLogout()
+    {
+        echo "du wurdest ausgeloggt";
+        $_SESSION["login"] = 0;
     }
 
     function showStart() 
@@ -43,6 +49,17 @@ class UserController
     {
         // von Timothy Görzen
 
+        /*
+        if ($_SESSION["login"] != 1)
+        {
+            $this->view->setDoMethodName("showLogin");
+        }
+        else
+        {
+            return;
+        }
+        */
+
         if(isset($_POST["username"]) && isset($_POST["pw"]))
         {
             $username = $_POST["username"];
@@ -64,11 +81,6 @@ class UserController
                 $php_errormsg = "Email oder Passwort ungültig";
                 echo "bruder moment, es hat nicht funktioniert";
             }
-        }
-
-        if ($_SESSION["login"] != 1)
-        {
-            $this->view->setDoMethodName("showLogin");
         }
 
         //$erg = $this->db->query("SELECT * FROM user");

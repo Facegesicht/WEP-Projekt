@@ -3,11 +3,10 @@ include dirname(__DIR__).'/header.phtml';
 ?>
 
 <form method="post">
-    Benutzername: <input type="text" name="username" /><br>
-    Passwort: <input type="password" name="pw" /><br>
+    Du wurdest erfolgreich abgemeldet.
     <input type="hidden" name="controller" value="user" />
     <input type="hidden" name="do" value="showLogin" />
-    <input type="submit" name="submit" value="Anmelden" >
+    <input type="submit" name="submit" value="Zur Anmeldung" >
 </form>
 
 <?php include dirname(__DIR__).'/footer.phtml'; ?>
