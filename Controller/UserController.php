@@ -22,13 +22,23 @@ class UserController
         $this->checkLogin();
     }
 
+    public function showProfile()
+    {
+
+    }
+
+    public function showRegistration()
+    {
+
+    }
+
     public function showLogout()
     {
         echo "du wurdest ausgeloggt";
         $_SESSION["login"] = 0;
     }
 
-    function showStart() 
+    public function showStart() 
     {
         //von timothy görzen
         $this->checkIfLoggedIn();
@@ -43,27 +53,18 @@ class UserController
             $this->view->setDoMethodName("showLogin");
             //include("showLogin.phtml");
             //exit;
+            return false;
         }
         else
         {
             echo "du bist eingeloggt";
+            return true;
         }
     }
 
-    public function checkLogin()
+    function checkLogin()
     {
         // von Timothy Görzen
-
-        /*
-        if ($_SESSION["login"] != 1)
-        {
-            $this->view->setDoMethodName("showLogin");
-        }
-        else
-        {
-            return;
-        }
-        */
 
         if(isset($_POST["username"]) && isset($_POST["pw"]))
         {

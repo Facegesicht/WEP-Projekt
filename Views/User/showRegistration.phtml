@@ -1,14 +1,19 @@
+<!-- von timothy görzen -->
+
 <?php
 include dirname(__DIR__).'/header.phtml';
 ?>
 
 <form method="post">
+    Vorname: <input type="text" name="vorname" /><br>
+    Nachnahme: <input type="text" name="nachname" /><br>
     Benutzername: <input type="text" name="username" /><br>
+    E-Mail: <input type="text" name="email" /><br>
     Passwort: <input type="password" name="pw" /><br>
     <input type="hidden" name="controller" value="user" />
     <input type="hidden" name="do" value="showLogin" />
-    <input type="submit" name="submit" value="Anmelden" ></br>
-    Noch nicht registriert? hier geht es zur <a href="?controller=User&do=showRegistration">registrierung</a>
+    <input type="submit" name="submit" value="Registrieren" ></br>
+    <a href="?controller=User&do=showStart">registrierung</a>
 </form>
 
 <?php include dirname(__DIR__).'/footer.phtml'; ?>
