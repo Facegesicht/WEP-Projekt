@@ -21,6 +21,11 @@ class UserController
     {
 
     }
+    
+    public function showRegister()
+    {
+
+    }
 
     public function checkLogin()
     {
@@ -29,11 +34,7 @@ class UserController
 
         echo "Test: $username mit PW: $pw ";
         //Db Anfrage
-        //$erg = $this->db->query("SELECT * FROM user");
-        //print_r($erg);
-
         $user = $this->db->selectUser($username);
-        //echo $user;
 
         var_dump($user);
 
@@ -45,6 +46,4 @@ class UserController
         //Hinweis: Zum überschreiben der View:
         $this->view->setDoMethodName("showLogin");
     }
-
-
 }
