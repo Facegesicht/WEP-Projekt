@@ -7,19 +7,23 @@
         <link href="CSS/style.css" rel="stylesheet" type="text/css" />
         <link href="CSS/style_grid.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <header>
-            <div class="container">
-                <nav>
-                    <h1>Überschrift</h1>
-                    <ul>
-                        <li><a href="?controller=Default&do=showStart">Willkommen</a></li>
-                        <li><a href="#">Punkt 2</a></li>
-                        <li><a href="#">Punkt 3</a></li>
-                        <li><a href="#">Punkt 4</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <div id="wrapper">
-            <main>
+        <nav id="header-nav">
+			<div class="container" id="desktop-nav">
+				<div class="row">
+					<div class="col-6">
+						<a href="?controller=Default&do=showStart" class="logo-link">
+							<img src="./img/logo.png" alt="logo">
+						</a>
+
+						<ul>
+                            <li><a href="?controller=Default&do=showStart">Willkommen</a></li>
+                            <li><a href="?controller=User&do=showLogin">Login</a></li>
+                            <li><a href="#">Punkt 3</a></li>
+                            <li><a href="#">Punkt 4</a></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</nav>
+    <main>
