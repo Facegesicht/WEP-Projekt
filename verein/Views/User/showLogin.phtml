@@ -2,12 +2,19 @@
 include dirname(__DIR__).'/header.phtml';
 ?>
 
-<form method="post">
-    Benutzername: <input type="text" name="username" /><br>
-    Passwort: <input type="password" name="pw" /><br>
-    <input type="hidden" name="controller" value="user" />
-    <input type="hidden" name="do" value="checkLogin" />
-    <input type="submit" name="submit" value="Anmelden" >
-</form>
+<div class="wrapper">
+    <form method="post" class="form-signin">       
+        <h2 class="form-signin-heading">Login</h2>
+        <input type="text" class="form-control" name="username" placeholder="Benutzername"/>
+        <input type="password" class="form-control" name="pw" placeholder="Passwort"/>
+        <input type="hidden" name="controller" value="user" />
+        <input type="hidden" name="do" value="checkLogin" />
+        <br>
+        <input type="submit" name="submit" value="Anmelden" >
+        <br>
+        <br>
+        Noch kein Accoount? Registrieren sie sich <a href="?controller=User&do=showRegister">hier.</a>
+    </form>
+</div>
 
 <?php include dirname(__DIR__).'/footer.phtml'; ?>
