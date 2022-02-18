@@ -3,6 +3,7 @@
 
 namespace WEP\Controller;
 
+use WEP\Library\View;
 use WEP\Model\UserModel;
 
 
@@ -43,7 +44,10 @@ class UserController
         if($this->checkIfLoggedIn())
         {
             $vereine = $this->db->getVereine();
-            $_SESSION["vereine"] = $vereine;
+            $this->view->setVars([
+                'vereine' => $vereine]);
+
+            //$this->view->render();
         }
         else
         {

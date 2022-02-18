@@ -2,14 +2,14 @@
 include dirname(__DIR__).'/header.phtml';
 ?>    
 
-<!-- <a href="?controller=guestbook&do=showGuestbookForm">Neuen Eintrag schreiben</a> -->
 <div class="row">
-    <?php foreach ($_SESSION["verein"] as $index => $value): ?>
+    <?php foreach ($vereine as $index => $value): ?>
                 <div class="col-4 col-m-6 photo">
                     <h2><?=$value["title"]?></h2>
                     <h3><?=$value["description"]?></h3>
                 </div>
             <?php endforeach; ?>
 </div>
+
 <?php include dirname(__DIR__).'/footer.phtml'; ?>
 
