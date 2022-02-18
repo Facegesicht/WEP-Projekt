@@ -3,6 +3,7 @@
 
 namespace WEP\Model;
 
+use Exception;
 
 class UserModel extends Database
 {
@@ -12,11 +13,36 @@ class UserModel extends Database
 
         $pdo = $this->linkDB();
 
-        //try catch
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array($username));
+        try
+        {
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(array($username));
+    
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
+        catch(Exception $e)
+        {
+            echo "Error caught: " . $e->getMessage();
+        }
+    }
 
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    public function getVereine()
+    {
+        //von timothy görzen
+        $sql = "SELECT * FROM sportingGroup";
+
+        $pdo = $this->linkDB();
+
+        try
+        {
+            $sth = $pdo->prepare($sql);
+            $sth->execute();
+            return $sth->fetchAll(\PDO::FETCH_ASSOC);
+        }
+        catch(Exception $e)
+        {
+            echo "Error caught: " . $e->getMessage();
+        }
     }
 
     public function checkPassword($username, $password)

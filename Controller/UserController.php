@@ -34,14 +34,21 @@ class UserController
 
     public function showLogout()
     {
-        echo "du wurdest ausgeloggt";
         $_SESSION["login"] = 0;
     }
 
     public function showStart() 
     {
         //von timothy görzen
-        $this->checkIfLoggedIn();
+        if($this->checkIfLoggedIn())
+        {
+            $vereine = $this->db->getVereine();
+            $_SESSION["vereine"] = $vereine;
+        }
+        else
+        {
+            $this->view->setDoMethodName("showLogin");
+        }
     }
 
     function checkIfLoggedIn()
@@ -49,15 +56,12 @@ class UserController
         // von timothy görzen
         if ($_SESSION["login"] != 1)
         {
-            echo "du bist nicht eingeloggt";
-            $this->view->setDoMethodName("showLogin");
             //include("showLogin.phtml");
             //exit;
             return false;
         }
         else
         {
-            echo "du bist eingeloggt";
             return true;
         }
     }
@@ -70,37 +74,30 @@ class UserController
         {
             $username = $_POST["username"];
             $pw = $_POST["pw"];
-    
-            echo "Test3: $username mit PW: $pw ";
 
             $user = $this->db->selectUser($username);
     
             if($user !== false && password_verify($pw, $user['pw']))
             {
-                var_dump($user);
-                $_SESSION["login"] = 1;
+                $this->setSessionVars($user);
                 $this->view->setDoMethodName("showStart");
             }
             else
             {
-                //new \WEP\Library\ErrorMsg('Email oder Passwort falsch');
                 $message = "wrong answer";
                 echo "<script type='text/javascript'>alert('$message');</script>";
-                $php_errormsg = "Email oder Passwort ungültig";
-                //echo "bruder moment, es hat nicht funktioniert";
             }
         }
+    }
 
-        //$erg = $this->db->query("SELECT * FROM user");
-        //print_r($erg);
-
-        //echo $user;
-
-        //password_verify
-
-        //Fallunterscheidung, ob PW richtig oder falsch
-        //Im Fehlerfall LoginForm nochmals anzeigen - mit Fehlermeldung
-        //Im Erfolgsfall Seite xy anzeigen
-        //Hinweis: Zum überschreiben der View:
+    function setSessionVars($user)
+    {
+        //von timothy görzen
+        var_dump($user);
+        $_SESSION["login"] = 1;
+        $_SESSION["username"] = $user['username'];
+        $_SESSION["firstname"] = $user['firstname'];
+        $_SESSION["lastname"] = $user['lastname'];
+        $_SESSION["isTrainer"] = $user['isTrainer'];
     }
 }

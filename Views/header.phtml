@@ -18,13 +18,11 @@ use WEP\Controller\UserController;
                     <h1>Überschrift</h1>
                     <ul>
                         <li><a href="?controller=User&do=showStart">Willkommen</a></li>
-                        <li><a href="?controller=Default&do=testFunction1">Punkt 2</a></li>
-                        <li><a href="?controller=Default&do=testFunction2">Punkt 3</a></li>
-                        <li><a href="#">Punkt 4</a></li>
 
+                        <!-- header logik von timothy görzen -->
                         <li><a href="?controller=User&do=showProfile"> 
                             <?php if ($_SESSION["login"] == 1): ?>
-                                <p> PROFIL (weil eingeloggt) </p>
+                                <?php print $_SESSION["username"] . "`s Profil"; ?>
                             <?php else: ?>
                                 <!-- <p> hier ist nix </p> -->
                             <?php endif ?>
@@ -32,7 +30,7 @@ use WEP\Controller\UserController;
 
                         <li><a href="?controller=User&do=showLogout">
                             <?php if ($_SESSION["login"] == 1): ?>
-                                <p> Abmelden </p>
+                                <?php print "Abmelden"; ?>
                             <?php else: ?>
                                 <!-- <p> hier ist nix </p> -->
                             <?php endif ?>

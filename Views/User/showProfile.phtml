@@ -5,7 +5,10 @@ include dirname(__DIR__).'/header.phtml';
 ?>
 
 <form method="post">
-    <h1> Hier ist das noch nicht implementierte Profilpage aal</h1>
+    <h1>Profil von <?php echo $_SESSION["username"]?></h1> </br>
+    <p>Vorname: <?php echo $_SESSION["firstname"]?></p> 
+    <p>Nachname: <?php echo $_SESSION["lastname"]?></p> 
+    <p>Trainer: <?php echo $_SESSION["isTrainer"]?></p>
 </form>
 
 <?php include dirname(__DIR__).'/footer.phtml'; ?>
