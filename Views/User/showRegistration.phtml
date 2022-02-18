@@ -21,12 +21,14 @@ include dirname(__DIR__).'/header.phtml';
 <div class="wrapper">
     <form method="post" class="form-signin">       
         <h2 class="form-signin-heading">Registrieren</h2>
-        <input type="text" class="form-control" name="username" placeholder="Benutzername"/>
-        <input type="password" class="form-control" name="pw" placeholder="Passwort"/>
+        <input type="text" class="form-control" name="vorname" placeholder="Vorname"/><br>
+        <input type="text" class="form-control" name="nachname" placeholder="Nachname"/><br>
+        <input type="text" class="form-control" name="username" placeholder="Benutzername"/><br>
+        <input type="text" class="form-control" name="email" placeholder="E-Mail"/><br>
+        <input type="password" class="form-control" name="pw" placeholder="Passwort"/><br>
         <input type="hidden" name="controller" value="user" />
-        <input type="hidden" name="do" value="checkLogin" />
-        <br>
-        <input type="submit" name="submit" value="Registrieren" >
+        <input type="hidden" name="do" value="showLogin" />
+        <input type="submit" name="submit" value="Registrieren" ></br>
     </form>
 </div>
 

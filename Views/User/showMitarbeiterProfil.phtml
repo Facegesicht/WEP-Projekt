@@ -1,0 +1,18 @@
+<!-- von timothy görzen -->
+
+<?php
+include dirname(__DIR__).'/header.phtml';
+?>
+<div class="wrapper">
+    <form method="post" class="form-signin">     
+        <h1 class="col-4 col-m-6 photo">Mitglieder:</h1></br>  
+        <?php foreach ($mitglieder as $index => $value): ?>
+                    <div class="col-4 col-m-6 photo">
+                        <h3><?=$value["firstname"]?></h2>
+                        <h3><?=$value["lastname"]?></h3> </br>
+                    </div>
+                <?php endforeach; ?>
+    </form>
+</div>
+
+<?php include dirname(__DIR__).'/footer.phtml'; ?>

@@ -7,6 +7,7 @@ include dirname(__DIR__).'/header.phtml';
                 <div class="col-4 col-m-6 photo">
                     <h2><?=$value["title"]?></h2>
                     <h3><?=$value["description"]?></h3>
+                    <a href="?controller=User&do=showUserAddToGroup&value=<?php echo $value["id"]?>">Hier Einschreiben</a>
                 </div>
             <?php endforeach; ?>
 </div>

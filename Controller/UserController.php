@@ -28,6 +28,21 @@ class UserController
 
     }
 
+    public function showMitarbeiterProfil()
+    {
+        if($this->checkIfLoggedIn())
+        {
+            $mitglieder = $this->db->getUser();
+            $this->view->setVars([
+                'mitglieder' => $mitglieder]);
+                //echo "WARUM IST PHP SO SHIT";
+        }
+        else
+        {
+            $this->view->setDoMethodName("showLogin");
+        }
+    }
+
     public function showRegistration()
     {
 
@@ -46,13 +61,16 @@ class UserController
             $vereine = $this->db->getVereine();
             $this->view->setVars([
                 'vereine' => $vereine]);
-
-            //$this->view->render();
         }
         else
         {
             $this->view->setDoMethodName("showLogin");
         }
+    }
+
+    public function showUserAddToGroup()
+    {
+        $this->db->addUserToGroup($_SESSION["id"], $_GET["value"]);
     }
 
     function checkIfLoggedIn()
@@ -88,8 +106,7 @@ class UserController
             }
             else
             {
-                $message = "wrong answer";
-                echo "<script type='text/javascript'>alert('$message');</script>";
+                $this->view->setDoMethodName("showLogin");
             }
         }
     }
@@ -97,11 +114,12 @@ class UserController
     function setSessionVars($user)
     {
         //von timothy görzen
-        var_dump($user);
         $_SESSION["login"] = 1;
+        $_SESSION["id"] = $user['id'];
         $_SESSION["username"] = $user['username'];
         $_SESSION["firstname"] = $user['firstname'];
         $_SESSION["lastname"] = $user['lastname'];
         $_SESSION["isTrainer"] = $user['isTrainer'];
+        $_SESSION["isClerk"] = $user['isClerk'];
     }
 }

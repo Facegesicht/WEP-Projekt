@@ -3,12 +3,13 @@
 <?php
 include dirname(__DIR__).'/header.phtml';
 ?>
-
-<form method="post">
-    Du wurdest erfolgreich abgemeldet.
-    <input type="hidden" name="controller" value="user" />
-    <input type="hidden" name="do" value="showLogin" /> </br>
-    <input type="submit" name="submit" value="Zur Anmeldung" >
-</form>
+<div class="wrapper">
+    <form method="post" class="form-signin">
+        Du wurdest erfolgreich abgemeldet.
+        <input type="hidden" name="controller" value="user" />
+        <input type="hidden" name="do" value="showLogin" /> </br>
+        <input type="submit" name="submit" value="Zur Anmeldung" >
+    </form>
+</div>
 
 <?php include dirname(__DIR__).'/footer.phtml'; ?>

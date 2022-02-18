@@ -16,7 +16,7 @@ use WEP\Controller\UserController;
 			<div class="container" id="desktop-nav">
 				<div class="row">
 					<div class="col-6">
-						<a href="?controller=Default&do=showStart" class="logo-link">
+						<a href="?controller=User&do=showStart" class="logo-link">
 							<img src="./img/logo.png" alt="logo">
 						</a>
 
@@ -27,16 +27,20 @@ use WEP\Controller\UserController;
                             <li><a href="?controller=User&do=showProfile"> 
                                 <?php if ($_SESSION["login"] == 1): ?>
                                     <?php print $_SESSION["username"] . "`s Profil"; ?>
-                                <?php else: ?>
-                                    <!-- <p> hier ist nix </p> -->
-                                <?php endif ?>
+                                    <?php endif ?>
                                 </a></li>
+
+                            <li><a href="?controller=User&do=showMitarbeiterProfil"> 
+                            <?php if ($_SESSION["login"] == 1): ?>
+                                <?php if ($_SESSION["isClerk"] == 1): ?>
+                                    <?php print "Mitglieder"; ?>
+                                <?php endif ?>
+                                <?php endif ?>
+                            </a></li>
 
                             <li><a href="?controller=User&do=showLogout">
                                 <?php if ($_SESSION["login"] == 1): ?>
                                     <?php print "Abmelden"; ?>
-                                <?php else: ?>
-                                    <!-- <p> hier ist nix </p> -->
                                 <?php endif ?>
                                 </a></li>
 
